@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#035352">
+  <meta name="description" content="DAN ANTEE TEXTILE. Curated textiles, distinctive kaftan sets and statement pieces.">
+  <title>DAN ANTEE TEXTILE | Fabric With A Point Of View</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #035352;
+      --teal-dark: #023c3b;
+      --yellow: #F3E8BC;
+      --cream: #F7F3E8;
+      --ink: #092827;
+      --muted: rgba(247,243,232,.68);
+      --line: rgba(243,232,188,.22);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --script: "Allura", cursive;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--teal);
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    ::selection {
+      background: var(--yellow);
+      color: var(--teal);
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--cream);
+      transition: .35s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(3,83,82,.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding-block: 12px;
+      border-bottom: 1px solid rgba(243,232,188,.12);
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .nav-links a {
+      opacity: .78;
+      transition: .25s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--yellow); }
+
+    .nav-cta {
+      padding: 10px 15px;
+      border: 1px solid rgba(243,232,188,.55);
+      border-radius: 100px;
+      color: var(--yellow) !important;
+      opacity: 1 !important;
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--cream);
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--cream);
+      background:
+        linear-gradient(180deg, rgba(2,50,49,.22), rgba(2,42,41,.85)),
+        url("assets/background.webp") center/cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 72% 24%, rgba(243,232,188,.2), transparent 28%),
+        linear-gradient(90deg, rgba(2,42,41,.68), transparent 65%);
+    }
+
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      width: min(1250px, 90%);
+      margin: 0 auto;
+      padding: 150px 0 72px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--yellow);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(62px, 9vw, 128px);
+      line-height: .78;
+      letter-spacing: -.055em;
+    }
+
+    .hero h1 .script {
+      display: block;
+      color: var(--yellow);
+      font-family: var(--script);
+      font-size: .72em;
+      line-height: .8;
+      letter-spacing: 0;
+      margin-left: .2em;
+      transform: rotate(-3deg);
+    }
+
+    .hero-copy {
+      width: min(480px, 100%);
+      margin-top: 32px;
+      color: rgba(247,243,232,.78);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 21px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .25s, background .25s, color .25s;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--teal);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(247,243,232,.35);
+      color: var(--cream);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-bottom {
+      position: absolute;
+      right: 5vw;
+      bottom: 62px;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: 9px;
+      color: rgba(247,243,232,.6);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 28px;
+      left: 5vw;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(247,243,232,.55);
+    }
+
+    .scroll-cue span {
+      display: block;
+      width: 42px;
+      height: 1px;
+      background: rgba(247,243,232,.45);
+    }
+
+    /* GENERAL */
+    .section {
+      padding: 105px 5vw;
+    }
+
+    .section-inner {
+      width: min(1250px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      color: var(--teal);
+      font-size: 10px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: .88;
+      letter-spacing: -.04em;
+      color: var(--teal);
+    }
+
+    .section-title em {
+      font-family: var(--script);
+      color: #537b78;
+      font-size: .9em;
+      font-weight: 400;
+    }
+
+    /* INTRO */
+    .intro {
+      background: var(--cream);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(45px, 8vw, 120px);
+      align-items: center;
+    }
+
+    .intro-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 220px 220px 10px 10px;
+      background: var(--teal);
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .intro-image:hover img { transform: scale(1.04); }
+
+    .intro-image::after {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(243,232,188,.5);
+      border-radius: 210px 210px 4px 4px;
+      pointer-events: none;
+    }
+
+    .intro-copy {
+      max-width: 570px;
+    }
+
+    .intro-copy p {
+      margin-top: 28px;
+      color: #46605f;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .signature {
+      margin-top: 28px;
+      color: var(--teal);
+      font-family: var(--script);
+      font-size: 38px;
+    }
+
+    /* COLLECTION */
+    .collection {
+      background: var(--teal);
+      color: var(--cream);
+      padding-bottom: 90px;
+    }
+
+    .collection .section-kicker { color: var(--yellow); }
+    .collection .section-title { color: var(--cream); }
+    .collection .section-title em { color: var(--yellow); }
+
+    .collection-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .collection-description {
+      max-width: 340px;
+      color: rgba(247,243,232,.65);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .rail-wrap { position: relative; }
+
+    .rail {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      cursor: grab;
+      padding: 5px 1px 25px;
+    }
+
+    .rail:active { cursor: grabbing; }
+    .rail::-webkit-scrollbar { display: none; }
+
+    .card {
+      flex: 0 0 clamp(250px, 27vw, 355px);
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .card-image {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #0a4241;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .card:hover .card-image img { transform: scale(1.045); }
+
+    .card-image::after {
+      content: "ENQUIRE";
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 8px 11px;
+      border: 1px solid rgba(243,232,188,.55);
+      background: rgba(3,83,82,.7);
+      backdrop-filter: blur(8px);
+      color: var(--yellow);
+      font-size: 8px;
+      letter-spacing: .18em;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .3s;
+    }
+
+    .card:hover .card-image::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 13px;
+      color: var(--yellow);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+    }
+
+    .card-meta span:last-child { opacity: .45; }
+
+    .rail-controls {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 5px;
+    }
+
+    .rail-btn {
+      width: 43px;
+      height: 43px;
+      border: 1px solid rgba(243,232,188,.3);
+      background: transparent;
+      color: var(--yellow);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .rail-btn:hover {
+      background: var(--yellow);
+      color: var(--teal);
+    }
+
+    /* FEATURE BANNER */
+    .feature {
+      background: var(--yellow);
+      color: var(--teal);
+      padding: 0 5vw;
+      overflow: hidden;
+    }
+
+    .feature-inner {
+      width: min(1250px, 100%);
+      margin: auto;
+      min-height: 550px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .feature-image {
+      height: 550px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-copy {
+      padding: 60px clamp(35px, 7vw, 95px);
+    }
+
+    .feature-copy .section-kicker { color: var(--teal); }
+
+    .feature-copy h2 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: .86;
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+
+    .feature-copy h2 span {
+      display: block;
+      font-family: var(--script);
+      font-size: .9em;
+      margin-top: 5px;
+    }
+
+    .feature-copy p {
+      margin-top: 25px;
+      max-width: 430px;
+      line-height: 1.8;
+      font-size: 14px;
+      color: rgba(3,83,82,.72);
+    }
+
+    .feature-copy .btn {
+      margin-top: 28px;
+      background: var(--teal);
+      color: var(--yellow);
+    }
+
+    /* CAPS */
+    .caps {
+      background: var(--cream);
+    }
+
+    .caps .card-image { border-radius: 50% 50% 5px 5px; }
+    .caps .card-meta { color: var(--teal); }
+    .caps .card-meta span:last-child { color: #59716f; }
+
+    /* FINAL CTA */
+    .final {
+      min-height: 650px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: var(--cream);
+      background:
+        linear-gradient(90deg, rgba(2,51,50,.93), rgba(2,51,50,.52)),
+        url("assets/bottom_image.webp") center/cover no-repeat;
+    }
+
+    .final::after {
+      content: "";
+      position: absolute;
+      inset: 25px;
+      border: 1px solid rgba(243,232,188,.24);
+      pointer-events: none;
+    }
+
+    .final-inner {
+      width: min(1100px, 90%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .final .section-kicker { color: var(--yellow); }
+
+    .final h2 {
+      font-family: var(--serif);
+      font-size: clamp(65px, 11vw, 145px);
+      font-weight: 500;
+      line-height: .75;
+      letter-spacing: -.06em;
+    }
+
+    .final h2 span {
+      display: block;
+      font-family: var(--script);
+      color: var(--yellow);
+      font-size: .68em;
+      line-height: .8;
+      margin-top: 10px;
+    }
+
+    .final p {
+      max-width: 480px;
+      margin: 35px auto 0;
+      color: rgba(247,243,232,.72);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .final .btn { margin-top: 28px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 35px 5vw;
+    }
+
+    .footer-inner {
+      width: min(1250px, 100%);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 27px;
+    }
+
+    .footer-small {
+      color: rgba(247,243,232,.48);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      background: rgba(1,24,24,.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-inner {
+      width: min(900px, 100%);
+      max-height: 90svh;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      background: var(--cream);
+      color: var(--teal);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lightbox-image {
+      min-height: 450px;
+      background: var(--teal);
+    }
+
+    .lightbox-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-info {
+      padding: 45px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .lightbox-info small {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .lightbox-info h3 {
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: .9;
+      font-weight: 500;
+    }
+
+    .lightbox-info p {
+      margin-top: 20px;
+      color: #56706e;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .close {
+      position: absolute;
+      z-index: 2;
+      right: 13px;
+      top: 13px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--yellow);
+      cursor: pointer;
+      font-size: 19px;
+    }
+
+    .lightbox .btn {
+      background: var(--teal);
+      color: var(--yellow);
+      margin-top: 25px;
+      width: max-content;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        position: absolute;
+        top: 62px;
+        left: 5vw;
+        right: 5vw;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(3,83,82,.96);
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        padding: 14px;
+        border-bottom: 1px solid rgba(243,232,188,.1);
+      }
+
+      .nav-links a:last-child { border-bottom: 0; }
+
+      .menu { display: block; }
+
+      .hero-content { padding-bottom: 85px; }
+      .hero h1 { font-size: clamp(58px, 18vw, 100px); }
+      .hero-bottom { display: none; }
+
+      .section { padding: 78px 5vw; }
+
+      .intro-grid,
+      .feature-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-image {
+        max-width: 460px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .intro-copy { margin-top: 5px; }
+
+      .feature-image { height: 420px; }
+      .feature-copy { padding: 60px 0 75px; }
+
+      .collection-head {
+        display: block;
+      }
+
+      .collection-description { margin-top: 20px; }
+
+      .rail-controls { display: none; }
+
+      .card { flex-basis: 76vw; }
+
+      .lightbox-inner {
+        grid-template-columns: 1fr;
+        max-height: 92svh;
+        overflow-y: auto;
+      }
+
+      .lightbox-image { height: 55svh; min-height: 280px; }
+      .lightbox-info { padding: 28px; }
+      .lightbox-info h3 { font-size: 40px; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="#" class="brand">DAN ANTEE TEXTILE</a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#yards">Yards</a>
+      <a href="#kaftans">Kaftans</a>
+      <a href="#caps">Caps</a>
+      <a href="#story">Story</a>
+      <a href="#contact" class="nav-cta whatsapp-link">WhatsApp</a>
+    </div>
+
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-grain"></div>
+
+      <div class="hero-content">
+        <div class="eyebrow">Textile · Design · Detail</div>
+
+        <h1>
+          Fabric with
+          <span class="script">a point of view.</span>
+        </h1>
+
+        <p class="hero-copy">
+          Curated textiles, distinctive kaftan sets and statement pieces
+          selected for people who understand that what you wear begins
+          with what you choose.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#yards" class="btn btn-primary">Explore the collection</a>
+          <a href="#contact" class="btn btn-secondary whatsapp-link">Talk to us</a>
+        </div>
+      </div>
+
+      <div class="scroll-cue"><span></span> Scroll to explore</div>
+      <div class="hero-bottom">DAN ANTEE · EST. TEXTILE & DESIGN</div>
+    </section>
+
+    <section class="section intro" id="story">
+      <div class="section-inner intro-grid">
+        <div class="intro-image reveal">
+          <img src="assets/side_image.webp" alt="DAN ANTEE textile design" loading="lazy">
+        </div>
+
+        <div class="intro-copy reveal">
+          <div class="section-kicker">The DAN ANTEE approach</div>
+          <h2 class="section-title">For fabric that does more than <em>fill a wardrobe.</em></h2>
+
+          <p>
+            We believe the right textile changes the entire feeling of a piece.
+            Colour, texture, pattern and movement all matter. DAN ANTEE TEXTILE
+            brings these elements together through carefully selected fabrics,
+            coordinated sets and design-led pieces made to stand apart.
+          </p>
+
+          <p>
+            Browse the collection, find the texture that catches your eye,
+            then speak with us directly for availability, pricing and orders.
+          </p>
+
+          <div class="signature">DAN ANTEE</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YARDS -->
+    <section class="section collection" id="yards">
+      <div class="section-inner">
+        <div class="collection-head reveal">
+          <div>
+            <div class="section-kicker">01 · Textiles</div>
+            <h2 class="section-title">The <em>yards.</em></h2>
+          </div>
+          <p class="collection-description">
+            Rich colour, considered pattern and tactile character.
+            Swipe through the selection and enquire about the piece
+            that speaks to you.
+          </p>
+        </div>
+
+        <div class="rail-wrap reveal">
+          <div class="rail" data-rail="yards">
+            <article class="card product-card" data-name="Yard 01" data-image="assets/yards-01.jpg">
+              <div class="card-image"><img src="assets/yards-01.jpg" alt="Textile yard 01" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 01</span><span>01</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 02" data-image="assets/yards-02.jpg">
+              <div class="card-image"><img src="assets/yards-02.jpg" alt="Textile yard 02" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 02</span><span>02</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 03" data-image="assets/yards-03.jpg">
+              <div class="card-image"><img src="assets/yards-03.jpg" alt="Textile yard 03" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 03</span><span>03</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 04" data-image="assets/yards-04.jpg">
+              <div class="card-image"><img src="assets/yards-04.jpg" alt="Textile yard 04" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 04</span><span>04</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 05" data-image="assets/yards-05.jpg">
+              <div class="card-image"><img src="assets/yards-05.jpg" alt="Textile yard 05" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 05</span><span>05</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 06" data-image="assets/yards-06.jpg">
+              <div class="card-image"><img src="assets/yards-06.jpg" alt="Textile yard 06" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 06</span><span>06</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 07" data-image="assets/yards-07.jpg">
+              <div class="card-image"><img src="assets/yards-07.jpg" alt="Textile yard 07" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 07</span><span>07</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 08" data-image="assets/yards-08.jpg">
+              <div class="card-image"><img src="assets/yards-08.jpg" alt="Textile yard 08" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 08</span><span>08</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 09" data-image="assets/yards-09.jpg">
+              <div class="card-image"><img src="assets/yards-09.jpg" alt="Textile yard 09" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 09</span><span>09</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard 12" data-image="assets/yards-12.jpg">
+              <div class="card-image"><img src="assets/yards-12.jpg" alt="Textile yard 12" loading="lazy"></div>
+              <div class="card-meta"><span>Yard 12</span><span>12</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Yard Array" data-image="assets/yards_array_display.jpg">
+              <div class="card-image"><img src="assets/yards_array_display.jpg" alt="Textile yard collection" loading="lazy"></div>
+              <div class="card-meta"><span>Yard Array</span><span>11</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Stripe Yard" data-image="assets/stripe_yard.jpg">
+              <div class="card-image"><img src="assets/stripe_yard.jpg" alt="Stripe textile yard" loading="lazy"></div>
+              <div class="card-meta"><span>Stripe</span><span>12</span></div>
+            </article>
+          </div>
+
+          <div class="rail-controls">
+            <button class="rail-btn prev" data-target="yards" aria-label="Previous">←</button>
+            <button class="rail-btn next" data-target="yards" aria-label="Next">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KAFTANS -->
+    <section class="section collection" id="kaftans" style="padding-top: 25px;">
+      <div class="section-inner">
+        <div class="collection-head reveal">
+          <div>
+            <div class="section-kicker">02 · Design</div>
+            <h2 class="section-title">Kaftan <em>sets.</em></h2>
+          </div>
+          <p class="collection-description">
+            Coordinated pieces where fabric, silhouette and detail
+            come together naturally.
+          </p>
+        </div>
+
+        <div class="rail-wrap reveal">
+          <div class="rail" data-rail="kaftans">
+            <article class="card product-card" data-name="Kaftan Sample" data-image="assets/kaftan_sample_array.jpg">
+              <div class="card-image"><img src="assets/kaftan_sample_array.jpg" alt="Kaftan sample collection" loading="lazy"></div>
+              <div class="card-meta"><span>Sample Array</span><span>01</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Kaftan Set 01" data-image="assets/kaftan_sets.jpg">
+              <div class="card-image"><img src="assets/kaftan_sets.jpg" alt="Kaftan set 01" loading="lazy"></div>
+              <div class="card-meta"><span>Kaftan Set</span><span>02</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Kaftan Set 02" data-image="assets/kaftan_sets-02.jpg">
+              <div class="card-image"><img src="assets/kaftan_sets-02.jpg" alt="Kaftan set 02" loading="lazy"></div>
+              <div class="card-meta"><span>Kaftan Set</span><span>03</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Kaftan Set 03" data-image="assets/kaftan_sets-03.jpg">
+              <div class="card-image"><img src="assets/kaftan_sets-03.jpg" alt="Kaftan set 03" loading="lazy"></div>
+              <div class="card-meta"><span>Kaftan Set</span><span>04</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Kaftan Set 04" data-image="assets/kaftan_sets-04.jpg">
+              <div class="card-image"><img src="assets/kaftan_sets-04.jpg" alt="Kaftan set 04" loading="lazy"></div>
+              <div class="card-meta"><span>Kaftan Set</span><span>05</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Kaftan Set 05" data-image="assets/kaftan_sets-05.jpg">
+              <div class="card-image"><img src="assets/kaftan_sets-05.jpg" alt="Kaftan set 05" loading="lazy"></div>
+              <div class="card-meta"><span>Kaftan Set</span><span>06</span></div>
+            </article>
+          </div>
+
+          <div class="rail-controls">
+            <button class="rail-btn prev" data-target="kaftans" aria-label="Previous">←</button>
+            <button class="rail-btn next" data-target="kaftans" aria-label="Next">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE -->
+    <section class="feature">
+      <div class="feature-inner">
+        <div class="feature-image">
+          <img src="assets/women_textiles.jpg" alt="Women and textile design" loading="lazy">
+        </div>
+
+        <div class="feature-copy reveal">
+          <div class="section-kicker">Selected textile story</div>
+          <h2>Wear the texture.<span>Own the presence.</span></h2>
+          <p>
+            From the first touch of the fabric to the finished silhouette,
+            the details matter. Discover pieces selected to give your next
+            design more character, depth and distinction.
+          </p>
+          <a href="#contact" class="btn whatsapp-link">Enquire on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPS -->
+    <section class="section caps" id="caps">
+      <div class="section-inner">
+        <div class="collection-head reveal">
+          <div>
+            <div class="section-kicker">03 · Finishing touch</div>
+            <h2 class="section-title">The <em>caps.</em></h2>
+          </div>
+          <p class="collection-description">
+            Small details can define the whole look. Browse the cap selection
+            and ask us about available colours and designs.
+          </p>
+        </div>
+
+        <div class="rail-wrap reveal">
+          <div class="rail" data-rail="caps">
+            <article class="card product-card" data-name="Cap 01" data-image="assets/caps-01.jpg">
+              <div class="card-image"><img src="assets/caps-01.jpg" alt="Cap 01" loading="lazy"></div>
+              <div class="card-meta"><span>Cap 01</span><span>01</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Cap 02" data-image="assets/caps-02.jpg">
+              <div class="card-image"><img src="assets/caps-02.jpg" alt="Cap 02" loading="lazy"></div>
+              <div class="card-meta"><span>Cap 02</span><span>02</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Cap 03" data-image="assets/caps-03.jpg">
+              <div class="card-image"><img src="assets/caps-03.jpg" alt="Cap 03" loading="lazy"></div>
+              <div class="card-meta"><span>Cap 03</span><span>03</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Cap 04" data-image="assets/caps-04.jpg">
+              <div class="card-image"><img src="assets/caps-04.jpg" alt="Cap 04" loading="lazy"></div>
+              <div class="card-meta"><span>Cap 04</span><span>04</span></div>
+            </article>
+
+            <article class="card product-card" data-name="Cap 05" data-image="assets/caps-05.jpg">
+              <div class="card-image"><img src="assets/caps-05.jpg" alt="Cap 05" loading="lazy"></div>
+              <div class="card-meta"><span>Cap 05</span><span>05</span></div>
+            </article>
+          </div>
+
+          <div class="rail-controls">
+            <button class="rail-btn prev" data-target="caps" aria-label="Previous">←</button>
+            <button class="rail-btn next" data-target="caps" aria-label="Next">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final" id="contact">
+      <div class="final-inner reveal">
+        <div class="section-kicker">Your next piece starts here</div>
+        <h2>Find your <span>fabric.</span></h2>
+        <p>
+          Seen something you like? Send us a message with the collection
+          or image you are interested in. We will help with availability,
+          pricing and order details.
+        </p>
+        <a href="#" class="btn btn-primary whatsapp-link">Chat on WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">DAN ANTEE TEXTILE</div>
+      <div class="footer-small">Textile · Design · Detail</div>
+      <div class="footer-small">© <span id="year"></span> DAN ANTEE</div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="close" id="closeLightbox" aria-label="Close">×</button>
+
+      <div class="lightbox-image">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+
+      <div class="lightbox-info">
+        <small>DAN ANTEE TEXTILE</small>
+        <h3 id="lightboxTitle">Selected Piece</h3>
+        <p>
+          Interested in this piece? Contact DAN ANTEE directly for
+          availability, pricing and order information.
+        </p>
+        <a href="#" class="btn whatsapp-link" id="lightboxWhatsApp">Enquire</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================
+       DAN ANTEE TEXTILE
+       Change the number below if the WhatsApp number ever changes.
+       Format: country code + number, no +, spaces or dashes.
+       ========================================================= */
+
+    const WHATSAPP_NUMBER = "2349061760712";
+
+    const nav = document.getElementById("nav");
+    const menu = document.getElementById("menu");
+    const navLinks = document.getElementById("navLinks");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxWhatsApp = document.getElementById("lightboxWhatsApp");
+    const closeLightbox = document.getElementById("closeLightbox");
+
+    function whatsappUrl(message = "Hello DAN ANTEE TEXTILE, I would like to make an enquiry.") {
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    }
+
+    document.querySelectorAll(".whatsapp-link").forEach(link => {
+      link.href = whatsappUrl();
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 35);
+    }, { passive: true });
+
+    menu.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menu.textContent = navLinks.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menu.textContent = "☰";
+      });
+    });
+
+    /* Horizontal collection controls */
+    document.querySelectorAll(".rail-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const rail = document.querySelector('[data-rail="' + button.dataset.target + '"]');
+        if (!rail) return;
+
+        const amount = rail.clientWidth * .78;
+        rail.scrollBy({
+          left: button.classList.contains("next") ? amount : -amount,
+          behavior: "smooth"
+        });
+      });
+    });
+
+    /* Mouse drag for desktop rails */
+    document.querySelectorAll(".rail").forEach(rail => {
+      let isDown = false;
+      let startX = 0;
+      let scrollStart = 0;
+
+      rail.addEventListener("mousedown", e => {
+        isDown = true;
+        startX = e.pageX - rail.offsetLeft;
+        scrollStart = rail.scrollLeft;
+      });
+
+      rail.addEventListener("mouseleave", () => isDown = false);
+      rail.addEventListener("mouseup", () => isDown = false);
+
+      rail.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - rail.offsetLeft;
+        rail.scrollLeft = scrollStart - (x - startX) * 1.15;
+      });
+    });
+
+    /* Product lightbox */
+    document.querySelectorAll(".product-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const name = card.dataset.name;
+        const image = card.dataset.image;
+
+        lightboxImg.src = image;
+        lightboxImg.alt = name;
+        lightboxTitle.textContent = name;
+
+        lightboxWhatsApp.href = whatsappUrl(
+          "Hello DAN ANTEE TEXTILE, I am interested in " + name + ". Please send me the availability and price."
+        );
+        lightboxWhatsApp.target = "_blank";
+        lightboxWhatsApp.rel = "noopener";
+
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeBox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    closeLightbox.addEventListener("click", closeBox);
+
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) closeBox();
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeBox();
+    });
+
+    /* Reveal animations */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
